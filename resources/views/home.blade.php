@@ -30,7 +30,7 @@
                             </svg>
                         </div>
                         <div class="ui field" style="display: block;margin: auto;">
-                        <table id="letters" style="display: block;margin: auto;">
+                        <table id="letters" style="width:500px; margin: 10px auto;">
                         </table>
                         </div>
                     </div>
@@ -43,14 +43,34 @@
         {
             if(i == 13)
             {
-                tmp+='</tr><tr><td><button class="ui green button">'+String.fromCharCode(65+i)+'</button></td>';
+                tmp+='</tr><tr><td style="text-align:center;"><button class="ui green button" style="text-align:center;padding:12px 25px 6px; box-sizing: border-box; width:25px;">'+String.fromCharCode(65+i)+'</button></td>';
             }
             else{
-                tmp+='<td><button class="ui green button">'+String.fromCharCode(65+i)+'</button></td>';
+                tmp+='<td style="text-align:center;"><button class="ui green button" style="text-align:center;padding:12px 25px 6px; box-sizing: border-box; width:25px;">'+String.fromCharCode(65+i)+'</button></td>';
             }
         }
         tmp+='</tr>';
         $("#letters").append(tmp)
+        $('button').click(function(e){
+            const sourceStr='occurence';
+            const searchStr=$(this).text();
+            $(this).addClass("hidden");
+            const indexes = [...sourceStr.matchAll(new RegExp(searchStr, 'gi'))].map(a => a.index);
+
+            let a = $("#ShowMe").text().split(" ");
+            if(indexes.length == 0)
+            {
+                // draw next line
+            }
+            else{
+                for(var i = 0; i<indexes.length; i++)
+                {
+                    a[indexes[i]] = searchStr;
+                }
+
+            }
+            $("#ShowMe").text(a.join(" "));
+        });
         </script>
     </body>
 </html>
