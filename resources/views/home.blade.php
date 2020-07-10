@@ -14,18 +14,8 @@
                     <div class="ui form" >
                         <div class="ui field">
                             <svg style="display: block;margin: auto;" width="33.14703724mm" height="41.5387783mm" viewBox="0 0 33.14703724 41.5387783">
-                                <g lc:layername="0" lc:is_locked="false" lc:is_construction="false" fill="none" stroke="black" stroke-width="1">
-                                    <line x1="0" y1="41.5387783" x2="9.42794058" y2="25.20910621"/>
-                                    <line x1="9.42794058" y1="25.20910621" x2="18.82727987" y2="41.48923942"/>
-                                    <line x1="18.82727987" y1="41.48923942" x2="9.42794058" y2="25.20910621"/>
-                                    <line x1="9.42794058" y1="25.20910621" x2="9.42794058" y2="0"/>
-                                    <line x1="9.42794058" y1="0" x2="30.49998096" y2="0"/>
-                                    <line x1="30.49998096" y1="0" x2="30.49998096" y2="6.63934416"/>
-                                    <circle cx="30.49998096" cy="8.53064243" r="1.89129827"/>
-                                    <line x1="30.37572436" y1="10.41785452" x2="30.37572436" y2="19.7364358"/>
-                                    <line x1="30.37572436" y1="19.7364358" x2="28.03678708" y2="23.78759401"/>
-                                    <line x1="30.49751248" y1="19.67375092" x2="32.77290586" y2="23.61484786"/>
-                                    <line x1="27.47426785" y1="14.21288203" x2="33.14703724" y2="14.21288203"/>
+                                <g id="myHangman" lc:layername="0" lc:is_locked="false" lc:is_construction="false" fill="none" stroke="black" stroke-width="1">
+ 
                                 </g>
                             </svg>
                         </div>
@@ -50,8 +40,70 @@
             }
         }
         tmp+='</tr>';
-        $("#letters").append(tmp)
-        $('button').click(function(e){
+        $("#letters").append(tmp);
+        var count = 0;
+        var rightDesk = document.createElementNS("http://www.w3.org/2000/svg","line");
+        rightDesk.setAttribute("x1","0");
+        rightDesk.setAttribute("y1","41.5387783");
+        rightDesk.setAttribute("x2","9.42794058");
+        rightDesk.setAttribute("y2","25.20910621");
+        var leftDesk = document.createElementNS("http://www.w3.org/2000/svg","line");
+        leftDesk.setAttribute("x1","9.42794058");
+        leftDesk.setAttribute("y1","25.20910621");
+        leftDesk.setAttribute("x2","18.82727987");
+        leftDesk.setAttribute("y2","41.48923942");
+        var vertical = document.createElementNS("http://www.w3.org/2000/svg","line");
+        vertical.setAttribute("x1","9.42794058");
+        vertical.setAttribute("y1","25.20910621");
+        vertical.setAttribute("x2","9.42794058");
+        vertical.setAttribute("y2","0");
+        var horizontal = document.createElementNS("http://www.w3.org/2000/svg","line");
+        horizontal.setAttribute("x1","9.42794058");
+        horizontal.setAttribute("y1","0");
+        horizontal.setAttribute("x2","30.49998096");
+        horizontal.setAttribute("y2","0");
+        var line = document.createElementNS("http://www.w3.org/2000/svg","line");
+        line.setAttribute("x1","30.49998096");
+        line.setAttribute("y1","0");
+        line.setAttribute("x2","30.49998096");
+        line.setAttribute("y2","6.63934416");
+        var head = document.createElementNS("http://www.w3.org/2000/svg","circle");
+        head.setAttribute("cx","30.49998096");
+        head.setAttribute("cy","8.53064243");
+        head.setAttribute("r","1.89129827");
+        var body = document.createElementNS("http://www.w3.org/2000/svg","line");
+        body.setAttribute("x1","30.37572436");
+        body.setAttribute("y1","10.41785452");
+        body.setAttribute("x2","30.37572436");
+        body.setAttribute("y2","19.7364358");
+        var arms = document.createElementNS("http://www.w3.org/2000/svg","line");
+        arms.setAttribute("x1","27.47426785");
+        arms.setAttribute("y1","14.21288203");
+        arms.setAttribute("x2","33.14703724");
+        arms.setAttribute("y2","14.21288203");
+        var rightLeg = document.createElementNS("http://www.w3.org/2000/svg","line");
+        rightLeg.setAttribute("x1","30.37572436");
+        rightLeg.setAttribute("y1","19.7364358");
+        rightLeg.setAttribute("x2","28.03678708");
+        rightLeg.setAttribute("y2","23.78759401");
+        var leftLeg = document.createElementNS("http://www.w3.org/2000/svg","line");
+        leftLeg.setAttribute("x1","30.49751248");
+        leftLeg.setAttribute("y1","19.67375092");
+        leftLeg.setAttribute("x2","32.77290586");
+        leftLeg.setAttribute("y2","23.61484786");
+        let hangmanSVG = [ // change to DOM Element
+            rightDesk,
+            leftDesk,
+            vertical,
+            horizontal,
+            line,
+            head,
+            body,
+            arms,
+            rightLeg,
+            leftLeg
+        ];
+        $('button').click(function(rightDesk){
             const sourceStr='occurence';
             const searchStr=$(this).text();
             $(this).addClass("hidden");
@@ -61,6 +113,9 @@
             if(indexes.length == 0)
             {
                 // draw next line
+                // load all vectors to array and one-by-one display
+                $("#myHangman").append(hangmanSVG.shift());
+                console.log($("#myHangman").text());
             }
             else{
                 for(var i = 0; i<indexes.length; i++)
