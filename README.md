@@ -12,8 +12,8 @@ Randomly select a word from a file, have the user guess characters in the word.F
 ![image](http://i.imgur.com/OLLSvDP.png)
 
 ### When win:
-![image](http://i.imgur.com/GA7VCSK.png)
+![image](http://i.imgur.com/cdXbgLV.png)
 
 ### When game over:
-![image](http://i.imgur.com/owBFlFQ.png)
+![image](http://i.imgur.com/8F5dLto.png)
 
