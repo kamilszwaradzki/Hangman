@@ -38,7 +38,12 @@
         var myId;
         $("#randomWordButton").click(function(){
             $("#randomWordButton").hide();
+            $('.ui.red.header,.ui.green.header').hide();
+            $('#strokedLetters').empty();
             $("#ShowMe,#mainFrame").show();
+            $('#myHangman').empty();
+            $('td button').attr('disabled', false);
+            $('#letters').show();
             $.ajax({
                 url: "/count"
             })
@@ -55,7 +60,6 @@
                     $("#ShowMe").text(msg.join(" "));
                 });
             });
-
         });
         var tmp = '<tr>';
         for(var i = 0; i < 26;++i)
@@ -133,7 +137,7 @@
             leftLeg
         ];
         $('td button').click(function(e){
-            $(this).off();
+            $(this).attr('disabled', true);
             $('#strokedLetters').append("<del style='font-size:16px;'>"+$(this).text()+"</del>&nbsp;");
             const searchStr=$(this).text();
             $(this).addClass("hidden");
@@ -145,32 +149,58 @@
             .done(function (data){
                 indexes = data; // type array
                 let a = $("#ShowMe").text().split(" ");
-            if(indexes.length == 0)
-            {
-                // draw next line
-                // load all vectors to array and one-by-one display
+                if(indexes.length == 0)
+                {
+                    // draw next line
+                    // load all vectors to array and one-by-one display
 
-                $("#myHangman").append(hangmanSVG.shift());
-                
-                if(hangmanSVG.length == 0) { 
-                    $("#buttons").empty();
-                    $("#buttons").append('<h1 class="ui red header" style="text-align: center;">Game Over!</h1>');
+                    $("#myHangman").append(hangmanSVG.shift());
+                    
+                    if(hangmanSVG.length == 0) {
+                        hangmanSVG = [ // change to DOM Element
+                            rightDesk,
+                            leftDesk,
+                            vertical,
+                            horizontal,
+                            line,
+                            head,
+                            body,
+                            arms,
+                            rightLeg,
+                            leftLeg
+                        ];
+                        $('#letters').hide();
+                        $("#buttons").append('<h1 class="ui red header" style="text-align: center;">Game Over!</h1>');
+                        $("#randomWordButton").show();
+                    }
                 }
-            }
-            else{
-                for(var i = 0; i<indexes.length; i++)
-                {
-                    a[indexes[i]] = searchStr;
+                else{
+                    for(var i = 0; i<indexes.length; i++)
+                    {
+                        a[indexes[i]] = searchStr;
+                    }
+                    var joinedA = a.join("");
+                    if(joinedA.indexOf('_') == -1)
+                    {
+                        hangmanSVG = [ // change to DOM Element
+                            rightDesk,
+                            leftDesk,
+                            vertical,
+                            horizontal,
+                            line,
+                            head,
+                            body,
+                            arms,
+                            rightLeg,
+                            leftLeg
+                        ];
+                        $('#letters').hide();
+                        $("#buttons").append('<h1 class="ui green header" style="text-align: center;">You Win!</h1>');
+                        $("#randomWordButton").show();
+                    }
                 }
-                var joinedA = a.join("");
-                if(joinedA.indexOf('_') == -1)
-                {
-                    $("#buttons").empty();
-                    $("#buttons").append('<h1 class="ui green header" style="text-align: center;">You Win!</h1>');
-                }
-            }
-            $("#ShowMe").text(a.join(" "));
-                
+                $("#ShowMe").text(a.join(" "));
+                    
             });         
         });
         </script>
