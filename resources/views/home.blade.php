@@ -10,24 +10,52 @@
             <div class="ui segment">
                 <div class="ui fluid form" >
                 <h1 class="ui header" style="text-align: center;"> Hangman </h1>
-                <h2 style="text-align: center;" id="ShowMe">_ _ _ _ _ _ _ _ _</h2>
+                <div class="ui field" id="controlButtons" style="text-align: center;display: block;margin: auto;">
+                            <button class="ui green button" id="randomWordButton">Random word</button>
+                </div>
+                <h2 style="text-align: center;display:none;" id="ShowMe">_ _ _ _ _ _ _ _ _</h2>
                     <div class="ui form" >
-                        <div class="ui field">
-                            <svg style="display: block;margin: auto;" width="33.14703724mm" height="41.5387783mm" viewBox="0 0 33.14703724 41.5387783">
-                                <g id="myHangman" lc:layername="0" lc:is_locked="false" lc:is_construction="false" fill="none" stroke="black" stroke-width="1">
- 
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="ui field" style="display: block;margin: auto;">
-                        <table id="letters" style="width:500px; margin: 10px auto;">
-                        </table>
+
+                        <div style="display:none;" id="mainFrame">
+                            <div class="ui field">
+                                <svg style="display: block;margin: auto;" width="33.14703724mm" height="41.5387783mm" viewBox="0 0 33.14703724 41.5387783">
+                                    <g id="myHangman" lc:layername="0" lc:is_locked="false" lc:is_construction="false" fill="none" stroke="black" stroke-width="1">
+                                    </g>
+                                </svg>
+                            </div>
+                            <div id="buttons" class="ui field" style="display: block;margin: auto;">
+                            <table id="letters" style="width:500px; margin: 10px auto;">
+                            </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <script>
+        var countRecords = 0;
+        var myId;
+        $("#randomWordButton").click(function(){
+            $("#randomWordButton").hide();
+            $("#ShowMe,#mainFrame").show();
+            $.ajax({
+                url: "/count"
+            })
+             .done(function( msg ) {
+                console.log( "Data Saved: " + msg );
+                countRecords = msg;
+                myId = Math.floor(Math.random() * Math.floor(countRecords));
+                $.ajax({
+                    url: "/modified",
+                    data: {id:myId}
+                })
+                .done(function(msg) {
+                    console.log(msg);
+                    $("#ShowMe").text(msg.join(" "));
+                });
+            });
+
+        });
         var tmp = '<tr>';
         for(var i = 0; i < 26;++i)
         {
@@ -103,28 +131,44 @@
             rightLeg,
             leftLeg
         ];
-        $('button').click(function(rightDesk){
-            const sourceStr='occurence';
+        $('td button').click(function(e){
             const searchStr=$(this).text();
             $(this).addClass("hidden");
-            const indexes = [...sourceStr.matchAll(new RegExp(searchStr, 'gi'))].map(a => a.index);
-
-            let a = $("#ShowMe").text().split(" ");
+             var indexes = [];
+            $.ajax({
+                url: '/contain',
+                data: {id:myId,letter:searchStr} 
+            })
+            .done(function (data){
+                indexes = data; // type array
+                let a = $("#ShowMe").text().split(" ");
             if(indexes.length == 0)
             {
                 // draw next line
                 // load all vectors to array and one-by-one display
+
                 $("#myHangman").append(hangmanSVG.shift());
-                console.log($("#myHangman").text());
+                
+                if(hangmanSVG.length == 0) { 
+                    $("#buttons").empty();
+                    $("#buttons").append('<h1 class="ui red header" style="text-align: center;">Game Over!</h1>');
+                }
             }
             else{
                 for(var i = 0; i<indexes.length; i++)
                 {
                     a[indexes[i]] = searchStr;
                 }
-
+                var joinedA = a.join("");
+                if(joinedA.indexOf('_') == -1)
+                {
+                    $("#buttons").empty();
+                    $("#buttons").append('<h1 class="ui green header" style="text-align: center;">You Win!</h1>');
+                }
             }
             $("#ShowMe").text(a.join(" "));
+                
+            });         
         });
         </script>
     </body>
