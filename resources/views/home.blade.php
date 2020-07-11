@@ -22,6 +22,7 @@
                                     <g id="myHangman" lc:layername="0" lc:is_locked="false" lc:is_construction="false" fill="none" stroke="black" stroke-width="1">
                                     </g>
                                 </svg>
+                                <div id="strokedLetters"></div>
                             </div>
                             <div id="buttons" class="ui field" style="display: block;margin: auto;">
                             <table id="letters" style="width:500px; margin: 10px auto;">
@@ -132,9 +133,11 @@
             leftLeg
         ];
         $('td button').click(function(e){
+            $(this).off();
+            $('#strokedLetters').append("<del style='font-size:16px;'>"+$(this).text()+"</del>&nbsp;");
             const searchStr=$(this).text();
             $(this).addClass("hidden");
-             var indexes = [];
+            var indexes = [];
             $.ajax({
                 url: '/contain',
                 data: {id:myId,letter:searchStr} 
