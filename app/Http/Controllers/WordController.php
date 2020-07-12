@@ -11,15 +11,15 @@ class WordController extends Controller
     //
     public function isWordContainSelectedLetter(Request $request)
     {
-        $id = $request->get('id');
         $letter = Str::lower($request->get('letter'));
-        $s = DB::table('words')->where('id',$id)->value('word');
-        $array = collect([]);
-        for($i = 0; $i < strlen($s); $i++)
-        {
-            if($s[$i] == $letter){$array->push($i);};
-        }
-        return $array;
+        $s = collect( str_split( 
+            DB::table('words')->where('id',$request->get('id'))->value('word') 
+            ) );
+        $filtered = $s->filter(function ($value, $key) use ($letter) {
+            return $value == $letter;
+        });          
+
+        return $filtered->keys();
         //collection
         //-1 or [1,3,4] or 4
     }
@@ -27,15 +27,11 @@ class WordController extends Controller
     public function getModifiedRecord(Request $request)
     {
         $id = $request->get('id');
+        $s = collect( str_split( DB::table('words')->where('id',$id)->value('word') ) );
         
-        $s = DB::table('words')->where('id',$id)->value('word');
-        $array = [];
-        for($i = 0; $i < strlen($s); $i++)
-        {
-            $array[$i]= '_';
-        }
-        return $array; // ['_','_','_'] etc.
-
+        return $s->transform(function ($item, $key) {
+            return '_';
+        });
     }
 
     public function getCountRecords()

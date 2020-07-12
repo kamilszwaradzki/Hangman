@@ -48,7 +48,6 @@
                 url: "/count"
             })
              .done(function( msg ) {
-                console.log( "Data Saved: " + msg );
                 countRecords = msg;
                 myId = Math.floor(Math.random() * Math.floor(countRecords));
                 $.ajax({
