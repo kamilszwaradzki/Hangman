@@ -13,7 +13,10 @@ class WordSeeder extends Seeder
     {
         //
         $contents = Storage::get('words_alpha.txt'); // storage/app/words_alpha.txt
-        $contents =  Str::of($contents)->split('/[\s\n]+/');
+        $contents = Str::of($contents)->split('/[\s\n]+/');
+        $contents = collect($contents)->random(20000);
+
+
         foreach($contents as $row)
         DB::table('words')->insert([
             'word' => $row
