@@ -170,6 +170,13 @@
                         ];
                         $('#letters').hide();
                         $("#buttons").append('<h1 class="ui red header" style="text-align: center;">Game Over!</h1>');
+                        $.ajax({
+                        url: '/wholeword',
+                        data: {id:myId}
+                        })
+                        .done(function (data){
+                            $("#ShowMe").text("It was about the word: "+data);
+                            });
                         $("#randomWordButton").show();
                     }
                 }

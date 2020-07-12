@@ -19,3 +19,4 @@ Route::get('/', function () {
 Route::get('modified','WordController@getModifiedRecord');
 Route::get('contain','WordController@isWordContainSelectedLetter');
 Route::get('count','WordController@getCountRecords');
+Route::get('wholeword','WordController@getWord');

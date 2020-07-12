@@ -9,6 +9,12 @@ use DB;
 class WordController extends Controller
 {
     //
+    public function getWord(Request $request)
+    {
+        $id = $request->get('id');
+        $s = Str::of(DB::table('words')->where('id',$id)->value('word'))->upper();
+        return $s;
+    }
     public function isWordContainSelectedLetter(Request $request)
     {
         $letter = Str::lower($request->get('letter'));
