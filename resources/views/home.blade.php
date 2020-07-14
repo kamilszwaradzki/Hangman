@@ -175,7 +175,7 @@
                         data: {id:myId}
                         })
                         .done(function (data){
-                            $("#ShowMe").text("It was about the word: "+data);
+                            $("#ShowMe").text("The word I mean is: "+data);
                             });
                         $("#randomWordButton").show();
                     }
