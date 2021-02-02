@@ -18,7 +18,7 @@ Randomly select a word from a file, have the user guess characters in the word.F
 ![image](http://i.imgur.com/u1ZQtCd.png)
 
 ## Configuration
-### First Step - create .env and modify for us
+### First Step - create .env and modify for yourself
 My example .env for SQLite database(Don't forget about create file `database.sqlite` in `database` directory)
 ```
 APP_NAME=Laravel
