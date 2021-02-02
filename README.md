@@ -23,7 +23,7 @@ My example .env for SQLite database(Don't forget about create file `database.sql
 ```
 APP_NAME=Laravel
 APP_ENV=local
-APP_KEY=base64:C6jEK29aTlsxeocRlASl5PhJhaZ6Hb0UmrDVHihnB0Q=
+APP_KEY=base64:MY_GENERATED_KEY
 APP_DEBUG=true
 APP_URL=http://localhost
 
