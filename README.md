@@ -9,7 +9,7 @@ Randomly select a word from a file, have the user guess characters in the word.F
 
 ### In game:
 
-![image](http://i.imgur.com/OLLSvDP.png)
+![image](https://i.imgur.com/M8rjJf5.png)
 
 ### When win:
 ![image](http://i.imgur.com/cdXbgLV.png)
