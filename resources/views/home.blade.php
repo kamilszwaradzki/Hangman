@@ -3,6 +3,29 @@
         <title>Hangman</title>
         <script type="text/javascript" charset="utf8" src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
         <link href="{{asset('Semantic-UI-CSS-master/semantic.min.css')}}" rel="stylesheet">
+        <style>
+          .letter-button{
+            background-color: #21ba45;
+            margin-right: 20px;
+            margin-left: 20px;
+          }
+          .letter.disabled{
+            opacity: 0.4;
+            pointer-events:none;
+          }
+          .letter{
+            width: 25px;
+            height: 25px;
+            background: #21ba45;
+            color: #fff;
+            border-radius: 3px;
+            text-align: center;
+          }
+          .letter:hover:not(.disabled),.letter:hover:not(.disabled) > .letter-button{
+            background: #1b9939;
+            cursor:pointer;
+          }
+        </style>
     </head>
     <body>
     <br>
@@ -42,7 +65,7 @@
             $('#strokedLetters').empty();
             $("#ShowMe,#mainFrame").show();
             $('#myHangman').empty();
-            $('td button').attr('disabled', false);
+            $('.letter').removeClass('disabled');
             $('#letters').show();
             $.ajax({
                 url: "/count"
@@ -65,10 +88,10 @@
         {
             if(i == 13)
             {
-                tmp+='</tr><tr><td style="text-align:center;"><button class="ui green button" style="text-align:center;padding:12px 25px 6px; box-sizing: border-box; width:25px;">'+String.fromCharCode(65+i)+'</button></td>';
+                tmp+='</tr><tr><td class="letter"><div class="letter-button" >'+String.fromCharCode(65+i)+'</div></td>';
             }
             else{
-                tmp+='<td style="text-align:center;"><button class="ui green button" style="text-align:center;padding:12px 25px 6px; box-sizing: border-box; width:25px;">'+String.fromCharCode(65+i)+'</button></td>';
+                tmp+='<td class="letter"><div class="letter-button" >'+String.fromCharCode(65+i)+'</div></td>';
             }
         }
         tmp+='</tr>';
@@ -135,15 +158,15 @@
             rightLeg,
             leftLeg
         ];
-        $('td button').click(function(e){
-            $(this).attr('disabled', true);
+        $('.letter').click(function(e){
+            $(this).toggleClass('disabled').off('click');
             $('#strokedLetters').append("<del style='font-size:16px;'>"+$(this).text()+"</del>&nbsp;");
             const searchStr=$(this).text();
             $(this).addClass("hidden");
             var indexes = [];
             $.ajax({
                 url: '/contain',
-                data: {id:myId,letter:searchStr} 
+                data: {id:myId,letter:searchStr}
             })
             .done(function (data){
                 indexes = data; // type array
@@ -154,7 +177,7 @@
                     // load all vectors to array and one-by-one display
 
                     $("#myHangman").append(hangmanSVG.shift());
-                    
+
                     if(hangmanSVG.length == 0) {
                         hangmanSVG = [ // change to DOM Element
                             rightDesk,
@@ -206,8 +229,8 @@
                     }
                 }
                 $("#ShowMe").text(a.join(" "));
-                    
-            });         
+
+            });
         });
         </script>
     </body>
