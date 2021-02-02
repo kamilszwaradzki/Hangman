@@ -159,7 +159,7 @@
             leftLeg
         ];
         $('.letter').click(function(e){
-            $(this).toggleClass('disabled').off('click');
+            $(this).toggleClass('disabled');
             $('#strokedLetters').append("<del style='font-size:16px;'>"+$(this).text()+"</del>&nbsp;");
             const searchStr=$(this).text();
             $(this).addClass("hidden");
