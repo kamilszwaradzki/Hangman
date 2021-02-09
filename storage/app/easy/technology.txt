@@ -1,0 +1,10 @@
+email
+game
+computer
+laptop
+screen
+mouse
+touchscreen
+mobile
+website
+keyboard

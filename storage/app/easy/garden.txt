@@ -1,0 +1,10 @@
+grass
+barbecue
+garage
+lawnmower
+flower
+hedge
+gate
+greenhouse
+lawn
+tree

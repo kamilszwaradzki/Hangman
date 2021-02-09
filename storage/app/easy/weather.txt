@@ -1,0 +1,12 @@
+warm
+rain
+sun
+wind
+dry
+cloud
+snow
+fog
+storm
+hot
+cold
+wet

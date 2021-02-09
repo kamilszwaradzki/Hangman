@@ -1,0 +1,11 @@
+hat
+trousers
+shirt
+jumper
+sweatshirt
+jeans
+coat
+jacket
+trainers
+top
+skirt

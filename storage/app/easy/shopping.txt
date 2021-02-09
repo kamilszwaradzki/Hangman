@@ -1,0 +1,9 @@
+trolley
+checkout
+supermarket
+customer
+basket
+receipt
+coin
+shelf
+cash

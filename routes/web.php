@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('modified','WordController@getModifiedRecord');
-Route::get('contain','WordController@isWordContainSelectedLetter');
-Route::get('count','WordController@getCountRecords');
-Route::get('wholeword','WordController@getWord');
+Route::get('modified/{difficulty}/{id}','WordController@getModifiedRecord');
+Route::get('contain/{difficulty}/{id}','WordController@isWordContainSelectedLetter');
+Route::get('count/{difficulty}','WordController@getCountRecords');
+Route::get('wholeword/{difficulty}/{id}','WordController@getWord');

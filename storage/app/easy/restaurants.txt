@@ -1,0 +1,12 @@
+plate
+waiter
+waitress
+meal
+knife
+glass
+cup
+fork
+bill
+spoon
+menu
+chef

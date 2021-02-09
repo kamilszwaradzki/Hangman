@@ -1,0 +1,11 @@
+cap
+bag
+glasses
+necklace
+belt
+pocket
+gloves
+earrings
+scarf
+rucksack
+bracelet

@@ -1,0 +1,8 @@
+athlete
+medal
+spectator
+winner
+team
+flag
+ticket
+stadium

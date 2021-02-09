@@ -1,0 +1,12 @@
+cabbage
+peas
+carrot
+pepper
+onion
+aubergine
+cucumber
+tomato
+cauliflower
+sweetcorn
+lettuce
+potato

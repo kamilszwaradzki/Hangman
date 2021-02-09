@@ -1,0 +1,109 @@
+.letter-button {
+    background-color: #21ba45;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.letter {
+    width: 25px;
+    height: 25px;
+    background: #21ba45;
+    color: #fff;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.letter.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.easy:hover:not(.disabled),
+.easy:hover:not(.disabled) > .letter-button {
+    background: #1b9939;
+    cursor: pointer;
+}
+
+.medium:hover:not(.disabled),
+.medium:hover:not(.disabled) > .letter-button {
+    background: #eaae00;
+    cursor: pointer;
+}
+
+.hard:hover:not(.disabled),
+.hard:hover:not(.disabled) > .letter-button {
+    background: #d01919;
+    cursor: pointer;
+}
+
+del {
+    font-size: 16px;
+}
+
+h1.ui.header,
+h2,
+#controlButtons {
+    text-align: center;
+}
+
+#title{
+    font-size: 2em;
+}
+
+#controlButtons {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+#controlButtons > fieldset > button, .easy, .medium, .hard {
+      text-shadow:
+    -1px -1px 0 #000,
+     0   -1px 0 #000,
+     1px -1px 0 #000,
+     1px  0   0 #000,
+     1px  1px 0 #000,
+     0    1px 0 #000,
+    -1px  1px 0 #000,
+    -1px  0   0 #000;
+}
+
+#buttons{
+    display: block;
+    margin: auto;
+}
+
+svg{
+    display: block;
+    margin: auto;
+}
+
+#category{
+    display: none;
+}
+
+#ShowMe, #mainFrame{
+    display: none;
+}
+
+#letters{
+    width:500px; 
+    margin: 10px auto;
+}
+
+.easy{
+ background-color: #21ba45;       
+}
+
+.medium {
+    background-color: #fbbd08;
+}
+
+.hard {
+    background-color: #db2828;
+}
+
+fieldset{
+    display: inline-block;
+}

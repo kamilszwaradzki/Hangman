@@ -1,0 +1,12 @@
+bike
+motorbike
+van
+bus
+scooter
+ship
+plane
+train
+lorry
+taxi
+car
+boat
