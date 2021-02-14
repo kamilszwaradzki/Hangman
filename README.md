@@ -5,17 +5,20 @@ Randomly select a word from a file, have the user guess characters in the word.F
 ## Screenshot
 
 ### Begin:
-![image](http://i.imgur.com/6joWnSo.png)
+![image](https://i.imgur.com/QZUV1Te.png)
 
 ### In game:
-
-![image](https://i.imgur.com/M8rjJf5.png)
-
+#### Easy:
+![image](https://i.imgur.com/3r9EG0Z.png)
+#### Medium:
+![image](https://i.imgur.com/W0FhUJY.png)
+#### Hard:
+![image](https://i.imgur.com/JdhNCCi.png)
 ### When win:
-![image](http://i.imgur.com/cdXbgLV.png)
+![image](https://i.imgur.com/fCg5Rgc.png)
 
 ### When game over:
-![image](http://i.imgur.com/u1ZQtCd.png)
+![image](https://i.imgur.com/b2igMjO.png)
 
 ## Configuration
 ### First Step - create .env and modify for yourself
