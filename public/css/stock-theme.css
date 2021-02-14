@@ -1,0 +1,42 @@
+:root {
+    --bg-color: #fff;
+    --caret-color: #fff;
+    --main-color: #000;
+    --sub-color: #fff;
+    --text-color: #000;
+    --error-color: #bf616a;
+    --error-extra-color: #793e44;
+    --colorful-error-color: #bf616a;
+    --colorful-error-extra-color: #793e44;
+}
+#easy,.easy{
+ background-color: #21ba45 !important;      
+}
+
+#medium,.medium {
+    background-color: #f2be25 !important;
+}
+
+#hard,.hard {
+    background-color: #db2828 !important;
+}
+.ui.segment{
+    background: inherit !important;
+}
+.easy:hover:not(.disabled),
+.easy:hover:not(.disabled) > .letter-button {
+    background: #1b9939 !important;
+    cursor: pointer;
+}
+
+.medium:hover:not(.disabled),
+.medium:hover:not(.disabled) > .letter-button {
+    background: #eaae00 !important;
+    cursor: pointer;
+}
+
+.hard:hover:not(.disabled),
+.hard:hover:not(.disabled) > .letter-button {
+    background: #d01919 !important;
+    cursor: pointer;
+}

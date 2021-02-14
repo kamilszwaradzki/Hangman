@@ -1,9 +1,26 @@
+body{
+    background: var(--bg-color);
+}
+.ui.fluid.form{
+    background-color: var(--bg-color) !important;
+    color:var(--text-color);
+}
+.ui.segment{
+    background: var(--main-color);
+}
 .letter-button {
     background-color: #21ba45;
     margin-right: 20px;
     margin-left: 20px;
 }
-
+.custom_styles{
+    display:flex;
+    flex-direction: column;
+    padding-left: 86%;
+}
+svg g {
+    stroke:var(--main-color);
+}
 .letter {
     width: 25px;
     height: 25px;
@@ -18,28 +35,13 @@
     pointer-events: none;
 }
 
-.easy:hover:not(.disabled),
-.easy:hover:not(.disabled) > .letter-button {
-    background: #1b9939;
-    cursor: pointer;
-}
-
-.medium:hover:not(.disabled),
-.medium:hover:not(.disabled) > .letter-button {
-    background: #eaae00;
-    cursor: pointer;
-}
-
-.hard:hover:not(.disabled),
-.hard:hover:not(.disabled) > .letter-button {
-    background: #d01919;
-    cursor: pointer;
-}
-
 del {
     font-size: 16px;
 }
-
+h1,h2,label,legend{
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    color:var(--main-color) !important;
+}
 h1.ui.header,
 h2,
 #controlButtons {
@@ -55,18 +57,6 @@ h2,
     margin: 0 auto;
     justify-content: center;
     align-items: center;
-}
-
-#controlButtons > fieldset > button, .easy, .medium, .hard {
-      text-shadow:
-    -1px -1px 0 #000,
-     0   -1px 0 #000,
-     1px -1px 0 #000,
-     1px  0   0 #000,
-     1px  1px 0 #000,
-     0    1px 0 #000,
-    -1px  1px 0 #000,
-    -1px  0   0 #000;
 }
 
 #buttons{
@@ -92,18 +82,23 @@ svg{
     margin: 10px auto;
 }
 
-.easy{
- background-color: #21ba45;       
-}
 
-.medium {
-    background-color: #fbbd08;
+#easy,#medium,#hard,.letter,.letter-button {
+    color:var(--bg-color);
+    background-color:var(--main-color);
 }
-
-.hard {
-    background-color: #db2828;
+.letter:hover:not(.disabled),
+.letter:hover:not(.disabled) > .letter-button {
+    background: var(--sub-color);
+    cursor: pointer;
+}
+.ui.form select{
+    background: var(--bg-color);
+    color:var(--main-color);
+    border:1px solid var(--main-color);
 }
 
 fieldset{
     display: inline-block;
+    border:0;
 }

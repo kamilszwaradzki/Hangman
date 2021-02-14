@@ -4,6 +4,7 @@
     <title>Hangman</title>
     <script type="text/javascript" charset="utf8" src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
     <link href="{{ asset('Semantic-UI-CSS-master/semantic.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/stock-theme.css') }}" rel="stylesheet" id="custom-variables">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 
@@ -36,11 +37,28 @@
                             <table id="letters"></table>
                         </div>
                     </div>
+                    <footer>
+                    
+                        <div class="custom_styles">
+                            <label for="custom-styles">Choose a style:</label>
+
+                            <select name="custom-styles" id="custom-styles">
+                              <option value="stock-theme" selected="true">stock theme</option>
+                              <option value="arch">arch</option>
+                              <option value="carbon">carbon</option>
+                              <option value="sweden">sweden</option>
+                              <option value="aether">aether</option>
+                              <option value="rudy">rudy</option>
+                              <option value="dark_magic_girl">dark-magic-girl</option>
+                            </select>
+                        </div>                        
+                    </footer>
                 </div>
             </div>
         </div>
     </div>
     <script src="{{ asset('js/hangman_script.js') }}" path="{{ asset('js/hangman.json') }}"></script>
+    <script src="{{ asset('js/theme_changer.js')}}" charset="utf8"></script>
 </body>
 
 </html>
