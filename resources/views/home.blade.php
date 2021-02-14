@@ -4,7 +4,7 @@
     <title>Hangman</title>
     <script type="text/javascript" charset="utf8" src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
     <link href="{{ asset('Semantic-UI-CSS-master/semantic.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/stock-theme.css') }}" rel="stylesheet" id="custom-variables">
+    <link href="{{ asset('css/stock-theme.css') }}" rel="stylesheet" id="custom-theme">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 
