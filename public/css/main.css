@@ -13,10 +13,13 @@ body{
     margin-right: 20px;
     margin-left: 20px;
 }
+footer{
+    display: flex;
+    flex-direction: row-reverse;
+}
 .custom_styles{
     display:flex;
     flex-direction: column;
-    padding-left: 86%;
 }
 svg g {
     stroke:var(--main-color);
