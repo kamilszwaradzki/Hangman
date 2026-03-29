@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Str;
-use DB;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class WordController extends Controller
 {
@@ -23,7 +23,7 @@ class WordController extends Controller
         $s = Str::of(DB::table('words')->where('difficulty',$difficulty)->where('id',self::difficulties[$difficulty]+$id)->value('word'))->upper();
         return $s;
     }
-    
+
     /*
      *   Route::get('contain/{difficulty}/{id}','WordController@isWordContainSelectedLetter');
      *
@@ -31,12 +31,12 @@ class WordController extends Controller
     public function isWordContainSelectedLetter(Request $request,$difficulty,$id)
     {
         $letter = Str::lower($request->get('letter'));
-        $s = collect( str_split( 
-                DB::table('words')->where('difficulty',$difficulty)->where('id',self::difficulties[$difficulty]+$id)->value('word') 
+        $s = collect( str_split(
+                DB::table('words')->where('difficulty',$difficulty)->where('id',self::difficulties[$difficulty]+$id)->value('word')
             ) );
         $filtered = $s->filter(function ($value, $key) use ($letter) {
             return $value == $letter;
-        });          
+        });
 
         return $filtered->keys();
         //collection
@@ -44,9 +44,9 @@ class WordController extends Controller
     }
 
     /*
-    *   
+    *
     *   Route::get('modified/{difficulty}/{id}','WordController@getModifiedRecord');
-    *  
+    *
     */
     public function getModifiedRecord($difficulty, $id)
     {
@@ -62,7 +62,7 @@ class WordController extends Controller
     /*
     *
     *  Route::get('count/{difficulty}','WordController@getCountRecords');
-    * 
+    *
     */
     public function getCountRecords($difficulty)
     {
